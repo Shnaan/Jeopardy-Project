@@ -127,6 +127,12 @@ async function setupTheGame ()
   // todo fill the table
   const spinner = document.getElementById("spinner");
   const playButton = document.getElementById("play");
+  const thead = document.querySelector("thead");
+  const tbody = document.querySelector("tbody");
+  
+  // clear table and set the button text to loading and disable it
+  thead.innerHTML = null;
+  tbody.innerHTML = null;
   playButton.textContent = "Game loading in Progress...";
   playButton.disabled = true;
   spinner.classList.add("enabled");
