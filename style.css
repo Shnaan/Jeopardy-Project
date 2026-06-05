@@ -15,7 +15,12 @@ h1
 {
   text-align: center;
 }
-
+.play-button
+{
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
 .disabled
 {
   display: none;
