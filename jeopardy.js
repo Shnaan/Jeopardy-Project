@@ -125,6 +125,11 @@ async function setupTheGame ()
   // todo fetch the game data (categories with clues)
 
   // todo fill the table
+  const spinner = document.getElementById("spinner");
+  spinner.classList.add("enabled");
+
+
+
 }
 
 /**
