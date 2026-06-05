@@ -95,6 +95,14 @@ $("#play").on("click", handleClickOfPlay);
 function handleClickOfPlay ()
 {
   // todo set the game up if the play button is clickable
+  const palyButton = document.getElementById("play");
+  if (isPlayButtonClickable)
+  {
+    isPlayButtonClickable = false;
+   palyButton.textContent = "Game loadingin in Progress...";
+    setupTheGame();
+    palyButton.textContent = "Restart the Game!";
+  }
 }
 
 /**
