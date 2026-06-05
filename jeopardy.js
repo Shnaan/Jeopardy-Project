@@ -101,7 +101,7 @@ function handleClickOfPlay ()
     isPlayButtonClickable = false;
    palyButton.textContent = "Game loadingin in Progress...";
     setupTheGame();
-    palyButton.textContent = "Restart the Game!";
+   
   }
 }
 
@@ -126,6 +126,9 @@ async function setupTheGame ()
 
   // todo fill the table
   const spinner = document.getElementById("spinner");
+  const playButton = document.getElementById("play");
+  playButton.textContent = "Game loading in Progress...";
+  playButton.disabled = true;
   spinner.classList.add("enabled");
 
 
