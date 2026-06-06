@@ -129,14 +129,20 @@ async function setupTheGame ()
   const playButton = document.getElementById("play");
   const thead = document.querySelector("thead");
   const tbody = document.querySelector("tbody");
-  
+
   // clear table and set the button text to loading and disable it
-  thead.innerHTML = null;
-  tbody.innerHTML = null;
+  
   playButton.textContent = "Game loading in Progress...";
   playButton.disabled = true;
   spinner.classList.add("enabled");
-
+  // fill the table with the data
+  fillTable();
+  // hide the spinner and enable the play button
+  spinner.classList.remove("enabled");
+  playButton.textContent = "Restart the Game!";
+  playButton.disabled = false;
+  
+ 
 
 
 }
@@ -151,11 +157,13 @@ async function setupTheGame ()
  */
 async function getCategoryIds ()
 {
-  const ids = []; // todo set after fetching
+   // todo set after fetching
 
   // todo fetch NUMBER_OF_CATEGORIES amount of categories
+    const response = await  axios.get(`https://rithm-jeopardy.herokuapp.com/api/categories?count=${NUMBER_OF_CATEGORIES}`);
+    const ids =  response.data.map(category => category.id);
 
-  return ids;
+    return ids;
 }
 
 /**
