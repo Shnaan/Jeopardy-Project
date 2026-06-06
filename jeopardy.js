@@ -127,21 +127,42 @@ async function setupTheGame ()
   // todo fill the table
   const spinner = document.getElementById("spinner");
   const playButton = document.getElementById("play");
-
+  const thead = document.querySelector("thead");
+  const tbody = document.querySelector("tbody");
 
   // clear table and set the button text to loading and disable it
   
   playButton.textContent = "Game loading in Progress...";
   playButton.disabled = true;
   spinner.classList.add("enabled");
-  // fill the table with the data
-  fillTable();
+
+
+  
+  // reset the categories array
+  categories = [];
+  //fetch the category IDs 
+  const categoryIds = await getCategoryIds();
+  //fetch the category data for each category ID and fill the categories array
+  for (let categoryId of categoryIds)
+  {
+    const categoryData = await getCategoryData(categoryId);
+    categories.push(categoryData);
+  } 
+
   // hide the spinner and enable the play button
   spinner.classList.remove("enabled");
   playButton.textContent = "Restart the Game!";
   playButton.disabled = false;
-  
+
+   console.log(categories);
+
+     // fill the table with the data
+    fillTable(categories);
+
+
 }
+
+
 
 /**
  * Gets as many category IDs as in the `NUMBER_OF_CATEGORIES` constant.
@@ -203,7 +224,7 @@ async function getCategoryData (categoryId)
     question: clue.question,
     answer: clue.answer
   }));
-  
+  console.log(categoryWithClues);
   return categoryWithClues;
 }
 
@@ -222,9 +243,6 @@ async function getCategoryData (categoryId)
 function fillTable (categories)
 {
   // todo
-
-    const thead = document.querySelector("thead");
-    const tbody = document.querySelector("tbody");
 }
 
 $(".clue").on("click", handleClickOfClue);
