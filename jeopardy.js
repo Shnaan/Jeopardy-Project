@@ -224,7 +224,7 @@ async function getCategoryData (categoryId)
     question: clue.question,
     answer: clue.answer
   }));
-  console.log(categoryWithClues);
+  console.log(`categoryWithClues:`, categoryWithClues);
   return categoryWithClues;
 }
 
