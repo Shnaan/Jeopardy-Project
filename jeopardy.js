@@ -142,9 +142,6 @@ async function setupTheGame ()
   playButton.textContent = "Restart the Game!";
   playButton.disabled = false;
   
- 
-
-
 }
 
 /**
@@ -196,8 +193,18 @@ async function getCategoryData (categoryId)
     clues: [] // todo set after fetching
   };
 
-  // todo fetch the category with NUMBER_OF_CLUES_PER_CATEGORY amount of clues
+  // todo fetch the category with NUMBER_OF_CLUES_PER_CATEGORY amount of 
+  let res = await axios.get(`https://rithm-jeopardy.herokuapp.com/api/category?id=${categoryId}`);
+  categoryWithClues.title = res.data.title;
+  //limit the clues to NUMBER_OF_CLUES_PER_CATEGORY
+  const clues = res.data.clues.slice(0, NUMBER_OF_CLUES_PER_CATEGORY);
 
+  categoryWithClues.clues = clues.map(clue => ({
+    id: clue.id,
+    question: clue.question,
+    answer: clue.answer
+  }));
+  
   return categoryWithClues;
 }
 
