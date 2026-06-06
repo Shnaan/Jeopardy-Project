@@ -127,8 +127,7 @@ async function setupTheGame ()
   // todo fill the table
   const spinner = document.getElementById("spinner");
   const playButton = document.getElementById("play");
-  const thead = document.querySelector("thead");
-  const tbody = document.querySelector("tbody");
+
 
   // clear table and set the button text to loading and disable it
   
@@ -223,6 +222,9 @@ async function getCategoryData (categoryId)
 function fillTable (categories)
 {
   // todo
+
+    const thead = document.querySelector("thead");
+    const tbody = document.querySelector("tbody");
 }
 
 $(".clue").on("click", handleClickOfClue);
