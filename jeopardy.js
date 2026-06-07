@@ -118,25 +118,25 @@ function handleClickOfPlay ()
  */
 async function setupTheGame ()
 {
-  // todo show the spinner while setting up the game
+  
 
-  // todo reset the DOM (table, button text, the end text)
-
-  // todo fetch the game data (categories with clues)
-
-  // todo fill the table
   const spinner = document.getElementById("spinner");
   const playButton = document.getElementById("play");
   const thead = document.querySelector("thead");
   const tbody = document.querySelector("tbody");
+  const activeClueElement = document.getElementById("active-clue");
 
   // clear table and set the button text to loading and disable it
   
   playButton.textContent = "Game loading in Progress...";
   playButton.disabled = true;
+  //show the spinner
   spinner.classList.add("enabled");
 
-
+//reset the DOM(Table,button text, the end text)
+  thead.innerHTML = "";
+  tbody.innerHTML = "";
+  activeClueElement.innerHTML = "";
   
   // reset the categories array
   categories = [];
