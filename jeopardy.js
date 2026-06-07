@@ -178,6 +178,7 @@ async function getCategoryIds ()
 
   // todo fetch NUMBER_OF_CATEGORIES amount of categories
     const response = await  axios.get(`https://rithm-jeopardy.herokuapp.com/api/categories?count=${NUMBER_OF_CATEGORIES}`);
+    console.log(`getCategoryIds response:`, response);
     const ids =  response.data.map(category => category.id);
 
     return ids;
@@ -215,6 +216,7 @@ async function getCategoryData (categoryId)
 
   // todo fetch the category with NUMBER_OF_CLUES_PER_CATEGORY amount of 
   let res = await axios.get(`https://rithm-jeopardy.herokuapp.com/api/category?id=${categoryId}`);
+  console.log(`getCategoryData response:`, res);
   categoryWithClues.title = res.data.title;
   //limit the clues to NUMBER_OF_CLUES_PER_CATEGORY
   const clues = res.data.clues.slice(0, NUMBER_OF_CLUES_PER_CATEGORY);
