@@ -259,8 +259,38 @@ function fillTable (categories)
     th.textContent = category.title;
     console.log(`Created th element:`, th);
     tableHeadRow.appendChild(th);
-    
+  }
 
+    // fill the table body with clues for each category level by level each clue in the same level in the same row
+    
+    for (let i = 0; i < NUMBER_OF_CLUES_PER_CATEGORY; i++)
+    {
+
+      const cluerow = document.createElement("tr");
+    tableBody.appendChild(cluerow);
+      for (let category of categories)
+      {
+        const td = document.createElement("td");
+        const clue = category.clues[i];     
+        console.log(`Adding clue:`, clue);
+        td.textContent = "?"; // question mark symbol
+        td.classList.add("clue");
+        //create id for the td element using category id and clue id
+          td.id = `${category.id}-clue${clue.id}`;
+        // set data attributes
+        td.dataset.categoryId = category.id;
+        td.dataset.clueId = clue.id;
+        td.dataset.question = clue.question;
+        td.dataset.answer = clue.answer;
+         // custom property to track if the clue has been viewed or not
+         td.dataset.viewed = "false";
+         td.addEventListener("click", handleClickOfClue);
+         console.log(`Created td element:`, td);
+         cluerow.appendChild(td);
+      }
+
+      
+  
   }
 }
   
