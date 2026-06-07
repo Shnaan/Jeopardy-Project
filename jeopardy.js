@@ -245,15 +245,20 @@ async function getCategoryData (categoryId)
 function fillTable (categories)
 {
   // todo
-  tableHead = document.querySelector("categories");
-  tableBody = document.querySelector("clues");
+  const tableHeadrow = document.querySelector("categories");
+  const tableBody = document.querySelector("clues");
+
+    // fill the table head with category titles
+
   for (let category of categories)
   {
     const th = document.createElement("th");
     th.textContent = category.title;
-    tableHead.appendChild(th);
-    
+    tableHeadRow.appendChild(th);
+
   }
+}
+  
 $(".clue").on("click", handleClickOfClue);
 
 /**
