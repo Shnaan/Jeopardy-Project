@@ -245,16 +245,21 @@ async function getCategoryData (categoryId)
 function fillTable (categories)
 {
   // todo
-  const tableHeadrow = document.querySelector("categories");
-  const tableBody = document.querySelector("clues");
+  const tableHead= document.getElementById("categories");
+  const tableBody = document.getElementById("clues");
+  const tableHeadRow = document.createElement("tr");
+  tableHead.appendChild(tableHeadRow);
 
     // fill the table head with category titles
 
   for (let category of categories)
   {
     const th = document.createElement("th");
+    console.log(`Adding category: ${category.title}`);
     th.textContent = category.title;
+    console.log(`Created th element:`, th);
     tableHeadRow.appendChild(th);
+    
 
   }
 }
