@@ -88,12 +88,15 @@ $("#play").on("click", handleClickOfPlay);
 function handleClickOfPlay ()
 {
   // todo set the game up if the play button is clickable
-  const palyButton = document.getElementById("play");
+  const playButton = document.getElementById("play");
   if (isPlayButtonClickable)
   {
     isPlayButtonClickable = false;
-   palyButton.textContent = "Playing...";
-    setupTheGame();
+     playButton.textContent = "Game loading in Progress...";
+     setupTheGame();
+     playButton.textContent = "Playing...";
+     playButton.disabled = true;
+
    
   }
 }
@@ -121,8 +124,7 @@ async function setupTheGame ()
 
   // clear table and set the button text to loading and disable it
   
-  playButton.textContent = "Game loading in Progress...";
-  playButton.disabled = true;
+  
   //show the spinner
   spinner.classList.add("enabled");
 
@@ -142,10 +144,10 @@ async function setupTheGame ()
     categories.push(categoryData);
   } 
 
-  // hide the spinner and enable the play button
+  // hide the spinner 
   spinner.classList.remove("enabled");
-  playButton.textContent = "Playing...";
-  playButton.disabled = true;
+ 
+ 
   
 
 
@@ -411,6 +413,8 @@ function handleClickOfActiveClue (event)
 
     if (categories.length === 0)
     {
+      const playButton = document.getElementById("play");
+      playButton.disabled = false; 
       isPlayButtonClickable = true;
       $("#play").text("Restart the Game!");
       $("#active-clue").html("The End!");
