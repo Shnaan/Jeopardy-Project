@@ -21,10 +21,12 @@ table {
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
+  background-color: #030407;
 }
 
 th,
 td {
+  background-color: #115ff4;
   border: 1px solid black;
   color: white;
   padding: 12px;
@@ -32,14 +34,17 @@ td {
 }
 
 th {
-  background-color: #558a48;
+  background-color: #050135;
 }
 
 td {
-  
-  color: white;
+  background-color: #041175;
+  color:#D69F4C;
   height: 70px;
   cursor: pointer;
+  font-size: 2.25em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px black;
 }
 
 td:hover {
@@ -69,19 +74,19 @@ h1
   width: 100%;
   justify-content: center;  
 }
+
 #active-clue
 {
 
   display: flex;
-  background-color: #28a200;
-  color: white;
+  background-color:  #115ff4;
+  color: rgb(247, 248, 248);
   justify-content: center;
   text-align: center;
   font-size: 1.5em;
   margin: 20px;
 
   border-radius: 25px;
-  background-color: #73AD21;
   padding: 20px;
  
   
