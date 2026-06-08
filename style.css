@@ -11,6 +11,41 @@
   #8d2ab5
   #74119c
 */
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+ 
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  border: 1px solid black;
+  color: white;
+  padding: 12px;
+  text-align: center;
+}
+
+th {
+  background-color: #558a48;
+}
+
+td {
+  
+  color: white;
+  height: 70px;
+  cursor: pointer;
+}
+
+td:hover {
+  opacity: 0.85;
+}
+
 h1
 {
   text-align: center;
@@ -26,14 +61,34 @@ h1
   display: none;
 }
 
-.viewed
-{
-  text-decoration: line-through;
-}
+
 
 .enabled
 {
   display: flex;
   width: 100%;
   justify-content: center;  
+}
+#active-clue
+{
+
+  display: flex;
+  background-color: #28a200;
+  color: white;
+  justify-content: center;
+  text-align: center;
+  font-size: 1.5em;
+  margin: 20px;
+
+  border-radius: 25px;
+  background-color: #73AD21;
+  padding: 20px;
+ 
+  
+} 
+
+
+.viewed
+{
+  text-decoration: line-through;
 }
