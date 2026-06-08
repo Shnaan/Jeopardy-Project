@@ -85,15 +85,17 @@ $("#play").on("click", handleClickOfPlay);
  * Hints:
  * - Sets up the game when the play button is clickable.
  */
-function handleClickOfPlay ()
+async function handleClickOfPlay ()
 {
   // todo set the game up if the play button is clickable
   const playButton = document.getElementById("play");
   if (isPlayButtonClickable)
   {
     isPlayButtonClickable = false;
+    playButton.style.backgroundColor = "#8d2ab5"; // change the button color to indicate it's clickable again
      playButton.textContent = "Game loading in Progress...";
-     setupTheGame();
+     await setupTheGame();
+     playButton.style.backgroundColor = "#28a200"; // change the button color to indicate it's clickable again
      playButton.textContent = "Playing...";
      playButton.disabled = true;
 
@@ -147,12 +149,6 @@ async function setupTheGame ()
   // hide the spinner 
   spinner.classList.remove("enabled");
  
- 
-  
-
-
-   
-
      // fill the table with the data
     fillTable(categories);
 
@@ -415,6 +411,7 @@ function handleClickOfActiveClue (event)
     {
       const playButton = document.getElementById("play");
       playButton.disabled = false; 
+      playButton.style.backgroundColor = "#115ff4"; // change the button color to indicate it's clickable again
       isPlayButtonClickable = true;
       $("#play").text("Restart the Game!");
       $("#active-clue").html("The End!");
