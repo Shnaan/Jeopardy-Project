@@ -73,13 +73,6 @@ let categories = []; // The categories with clues fetched from the API.
 ]
  */
 
-let activeClue = null; // Currently selected clue data.
-let activeClueMode = 0; // Controls the flow of #active-clue element while selecting a clue, displaying the question of selected clue, and displaying the answer to the question.
-/*
-0: Empty. Waiting to be filled. If a clue is clicked, it shows the question (transits to 1).
-1: Showing a question. If the question is clicked, it shows the answer (transits to 2).
-2: Showing an answer. If the answer is clicked, it empties (transits back to 0).
- */
 
 let isPlayButtonClickable = true; // Only clickable when the game haven't started yet or ended. Prevents the button to be clicked during the game.
 
@@ -283,7 +276,7 @@ function fillTable (categories)
         td.dataset.question = clue.question;
         td.dataset.answer = clue.answer;
          // custom property to track if the clue has been viewed or not
-         td.dataset.viewed = "false";
+         td.dataset.status= "inactive"; // can be "inactive", "active", or "viewed"
          td.addEventListener("click", handleClickOfClue);
          console.log(`Created td element:`, td);
          cluerow.appendChild(td);
@@ -307,13 +300,65 @@ $(".clue").on("click", handleClickOfClue);
  * - Don't forget to update the `activeClueMode` variable.
  *
  */
+
+
+
+let activeClue = null; // Currently selected clue data.
+let activeClueMode = 0; // Controls the flow of #active-clue element while selecting a clue, displaying the question of selected clue, and displaying the answer to the question.
+/*
+0: Empty. Waiting to be filled. If a clue is clicked, it shows the question (transits to 1).
+1: Showing a question. If the question is clicked, it shows the answer (transits to 2).
+2: Showing an answer. If the answer is clicked, it empties (transits back to 0).
+ */
+
 function handleClickOfClue (event)
 {
-  // todo find and remove the clue from the categories
 
-  // todo mark clue as viewed (you can use the class in style.css), display the question at #active-clue
-}
+  // prevent click another clue when there is an active clue
+    if ((event.target.dataset.status === "inactive" || event.target.dataset.status === "viewed") && activeClueMode !== 0) {
+    console.log(`status:`, event.target.dataset.status);
+    console.log("Another clue is active. Please answer the current clue before selecting another one.");
+     return; 
+    
+    }  
 
+
+    //retrieve the clicked element and its data attributes
+  const clickedElement = event.currentTarget;
+  const categoryId = clickedElement.dataset.categoryId;
+  const clueId = clickedElement.dataset.clueId;
+  const question = clickedElement.dataset.question;
+  const answer = clickedElement.dataset.answer;
+  const activeClueElement = document.getElementById("active-clue");
+  
+
+  // todo find and remove the clue from the 
+  if (clickedElement.dataset.status === "inactive")
+  {
+     activeClueMode = 1;
+     // set the question in the active clue element
+     activeClueElement.textContent = question;
+       
+    
+  //use shorthand property names to set the active clue
+  activeClue = {
+    categoryId,
+    clueId,
+    question,
+    answer
+  };
+// mark the clue as viewed and disable it
+    clickedElement.classList.add("viewed");
+    clickedElement.dataset.status = "viewed";
+    //make the clue unclickable
+    clickedElement.style.pointerEvents = "none";  
+    
+
+
+     
+   }
+  
+    }
 $("#active-clue").on("click", handleClickOfActiveClue);
 
 /**
