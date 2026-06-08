@@ -26,26 +26,27 @@ table {
 
 th,
 td {
-  background-color: #115ff4;
+  
   border: 1px solid black;
-  color: white;
   padding: 12px;
   text-align: center;
 }
 
 th {
   background-color: #050135;
+  color: white;
 }
 
 td {
   background-color: #041175;
   color:#D69F4C;
   height: 70px;
-  cursor: pointer;
   font-size: 2.25em;
   font-weight: bold;
-  text-shadow: 1px 1px 2px black;
+  text-shadow: 1px 1px 2px rgb(236, 246, 248);
   cursor: pointer;
+  padding: 20px;
+  margin: 10px;
 }
 
 td:hover {
