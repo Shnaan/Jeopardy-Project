@@ -147,7 +147,7 @@ async function setupTheGame ()
   playButton.textContent = "Restart the Game!";
   playButton.disabled = false;
 
-   console.log(categories);
+   
 
      // fill the table with the data
     fillTable(categories);
@@ -250,7 +250,7 @@ function fillTable (categories)
     const th = document.createElement("th");
     
     th.textContent = category.title;
-    console.log(`Created th element:`, th);
+    
     tableHeadRow.appendChild(th);
   }
 
@@ -265,7 +265,7 @@ function fillTable (categories)
       {
         const td = document.createElement("td");
         const clue = category.clues[i];     
-        console.log(`Adding clue:`, clue);
+        
         td.textContent = "?"; // question mark symbol
         td.classList.add("clue");
         //create id for the td element using category id and clue id
@@ -278,7 +278,7 @@ function fillTable (categories)
          // custom property to track if the clue has been viewed or not
          td.dataset.status= "inactive"; // can be "inactive", "active", or "viewed"
          td.addEventListener("click", handleClickOfClue);
-         console.log(`Created td element:`, td);
+        
          cluerow.appendChild(td);
       }
 
@@ -316,8 +316,7 @@ function handleClickOfClue (event)
 
   // prevent click another clue when there is an active clue
     if ((event.target.dataset.status === "inactive" || event.target.dataset.status === "viewed") && activeClueMode !== 0) {
-    console.log(`status:`, event.target.dataset.status);
-    console.log("Another clue is active. Please answer the current clue before selecting another one.");
+     console.log("Another clue is active. Please answer the current clue before selecting another one.");
      return; 
     
     }  
@@ -352,7 +351,7 @@ function handleClickOfClue (event)
     clickedElement.dataset.status = "viewed";
     //make the clue unclickable
     clickedElement.style.pointerEvents = "none";  
-    
+
 
 
      
