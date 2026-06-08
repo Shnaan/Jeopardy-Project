@@ -92,7 +92,7 @@ function handleClickOfPlay ()
   if (isPlayButtonClickable)
   {
     isPlayButtonClickable = false;
-   palyButton.textContent = "Game loadingin in Progress...";
+   palyButton.textContent = "Playing...";
     setupTheGame();
    
   }
@@ -144,8 +144,10 @@ async function setupTheGame ()
 
   // hide the spinner and enable the play button
   spinner.classList.remove("enabled");
-  playButton.textContent = "Restart the Game!";
-  playButton.disabled = false;
+  playButton.textContent = "Playing...";
+  playButton.disabled = true;
+  
+
 
    
 
