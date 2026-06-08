@@ -255,7 +255,7 @@ function fillTable (categories)
   for (let category of categories)
   {
     const th = document.createElement("th");
-    console.log(`Adding category: ${category.title}`);
+    
     th.textContent = category.title;
     console.log(`Created th element:`, th);
     tableHeadRow.appendChild(th);
