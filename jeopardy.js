@@ -350,14 +350,34 @@ function handleClickOfClue (event)
     clickedElement.classList.add("viewed");
     clickedElement.dataset.status = "viewed";
     //make the clue unclickable
-    clickedElement.style.pointerEvents = "none";  
+    clickedElement.style.pointerEvents = "none";
+    // remove the clue from the categories array
+    //first find the category index
+    const categoryIndex = categories.findIndex(category => category.id === parseInt(categoryId)); 
 
+   //if index not -1 indicates that the category is found
 
-
+    if (categoryIndex !== -1)
+    {
+      // find the clue index in the category
+      const clueIndex = categories[categoryIndex].clues.findIndex(clue => clue.id === parseInt(clueId));
      
-   }
-  
+      if (clueIndex !== -1)
+      {
+        // remove the clue from the category
+        categories[categoryIndex].clues.splice(clueIndex, 1);
+
+        // if the category is empty, remove it from the categories array
+        if (categories[categoryIndex].clues.length === 0)
+        {
+          console.log(`Category with id ${categoryId} removed.`);
+          categories.splice(categoryIndex, 1);
+        }
+      }
     }
+   
+    }
+  }
 $("#active-clue").on("click", handleClickOfActiveClue);
 
 /**
