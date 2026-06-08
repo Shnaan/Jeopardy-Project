@@ -92,10 +92,10 @@ async function handleClickOfPlay ()
   if (isPlayButtonClickable)
   {
     isPlayButtonClickable = false;
-    playButton.style.backgroundColor = "#8d2ab5"; // change the button color to indicate it's clickable again
+    playButton.style.backgroundColor = "#8d2ab5"; // change the button color to indicate status of loading
      playButton.textContent = "Game loading in Progress...";
      await setupTheGame();
-     playButton.style.backgroundColor = "#28a200"; // change the button color to indicate it's clickable again
+     playButton.style.backgroundColor = "#28a200"; // change the button color to indicate the game is ready to play
      playButton.textContent = "Playing...";
      playButton.disabled = true;
 
